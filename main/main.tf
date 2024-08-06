@@ -24,8 +24,8 @@ resource "azurerm_resource_group" "app_service" {
 
 resource "azurerm_app_service_plan" "app_service" {
   name                = local.app_service_plan_name
-  location            = azurerm_resource_group.app_service.location
-  resource_group_name = azurerm_resource_group.app_service.name
+  location            = var.location
+  resource_group_name = local.resource_group_name
 
   sku {
     tier = var.asp_tier
@@ -36,8 +36,8 @@ resource "azurerm_app_service_plan" "app_service" {
 
 resource "azurerm_app_service" "app_service" {
   name                = local.app_service_name
-  location            = azurerm_resource_group.app_service.location
-  resource_group_name = azurerm_resource_group.app_service.name
+  location            = var.location
+  resource_group_name = local.resource_group_name
   app_service_plan_id = azurerm_app_service_plan.app_service.id
   
   source_control {
