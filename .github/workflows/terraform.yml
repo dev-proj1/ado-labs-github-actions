@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'tf Apply resources'
 
 on: [push, pull_request]
 
