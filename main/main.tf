@@ -4,11 +4,10 @@
 
 
 locals {
-  resource_group_name = "rcg-content"
+  resource_group_name = "${var.naming_prefix}-${random_integer.name_suffix.result}"
   app_service_plan_name = "${var.naming_prefix}-${random_integer.name_suffix.result}"
   app_service_name = "${var.naming_prefix}-${random_integer.name_suffix.result}"
 }
-
 resource "random_integer" "name_suffix" {
   min = 10000
   max = 99999
@@ -17,7 +16,6 @@ resource "random_integer" "name_suffix" {
 ##################################################################################
 # APP SERVICE
 ##################################################################################
-
 
 resource "azurerm_resource_group" "app_service" {
   name     = local.resource_group_name
