@@ -18,6 +18,11 @@ resource "random_integer" "name_suffix" {
 # APP SERVICE
 ##################################################################################
 
+resource "azurerm_resource_group" "rg" {
+  name     = local.resource_group_name
+  location = var.location
+}
+
 resource "azurerm_resource_group" "app_service" {
   name     = local.resource_group_name
   location = var.location
